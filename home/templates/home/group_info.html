@@ -50,61 +50,67 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="card" id="group_info_card">
-                                    <h5 class="card-header">Project Title : {{title}}</h5> 
-                                    <div class="card-body">
-                                      <h5 class="card-text">Project Id :  {{id}}</h5> 
-                                      
-                                      <p class="card-text"><b>DOMAIN : </b>{{domain}}</p> 
-                                      <p class="card-text"><b>THRUST-AREA : </b>{{area}}</p> 
-                                      
-                                      <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                        DESCRIPTION
-                                      </button>
-                                      
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalCenterTitle">DESCRIPTION : </h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                              {{description}}
-                                            </div>
-                                            
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Project-title :</b>{{title}}</li>
+                                <li class="list-group-item"><b>Project-Id : </b>{{id}}</li>
+                                <li class="list-group-item"><b>DOMAIN : </b>{{domain}}</li>
+                                <li class="list-group-item"><b>THRUST AREA :</b>{{area}}</li>
+                                <li class="list-group-item"><!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                      DESCRIPTION
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">DESCRIPTION : </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
                                           </div>
+                                          <div class="modal-body">
+                                            {{description}}
+                                          </div>
+                                          
                                         </div>
                                       </div>
-                                      <a href="#" class="btn btn-primary" style="margin-left: 5px;">UPDATE</a>
-                                      {% if status == null %}
-                                      <div class="alert alert-info" role="alert">
-                                          PLEASE ADD A PROJECT!
-                                      </div>
-                                      {% endif %}
-                                      {% if status == 1 %}
-                                      <div class="alert alert-warning" role="alert">
-                                          APPROVAL PENDING!
-                                      </div>
-                                      {% endif %}
-                                      {% if status == 2 %}
-                                      <div class="alert alert-success" role="alert">
-                                          APPROVED!
-                                      </div>
-                                      {% endif %}
-                                      {% if status == 3 %}
-                                      <div class="alert alert-danger" role="alert">
-                                          REJECTED!
-                                      </div>
-                                      {% endif %}
                                     </div>
-                            </div>
-                         </div>                    
-                </div>
+                                    </li>
+
+                                <li class="list-group-item"><form method="POST">
+                                    {% csrf_token %}
+                                  <button class="btn btn-primary" style="margin-left: 5px;" >DELETE</button>
+                                </form>
+                                </li>
+                                <li>
+                                  {% if status == null %}
+                                  <div class="alert alert-info" role="alert">
+                                      PLEASE ADD A PROJECT!
+                                  </div>
+                                  {% endif %}
+                                  {% if status == 1 %}
+                                  <div class="alert alert-warning" role="alert">
+                                      APPROVAL PENDING!
+                                  </div>
+                                  {% endif %}
+                                  {% if status == 2 %}
+                                  <div class="alert alert-success" role="alert">
+                                      APPROVED!
+                                  </div>
+                                  {% endif %}
+                                  {% if status == 3 %}
+                                  <div class="alert alert-danger" role="alert">
+                                      REJECTED!
+                                  </div>
+                                  {% endif %}
+                                </li>
+                            </ul>
+                            
+                        </div>
+
+                        
             </div>
         </div>
 
